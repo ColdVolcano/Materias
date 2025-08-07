@@ -9,11 +9,12 @@ using HtmlAgilityPack;
 var webClient = new HttpClient();
 int i = 0;
 bool found = false;
+string ciclo = "202410";
 while (true)
 {
     foreach (var materia in materias)
     {
-        var liga = $"http://consulta.siiau.udg.mx/wco/sspseca.consulta_oferta?ciclop=202410&cup=D&crsep={materia.Materia}";
+        var liga = $"http://consulta.siiau.udg.mx/wco/sspseca.consulta_oferta?ciclop=${ciclo}&cup=D&crsep={materia.Materia}";
         string webpage = webClient.GetStringAsync(liga).GetAwaiter().GetResult();
 
         var htmlDocument = new HtmlDocument();
